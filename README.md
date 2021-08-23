@@ -26,7 +26,7 @@ The goal is to provide a suitable Api which allows http requests from the fronte
 https://drive.google.com/file/d/10u5iXSAPQUDJ8oXiiuRSMzyoc0ZyT4cg/view?usp=sharing
 ### Diagram
 <p>
-    <img src="https://drive.google.com/uc?export=view&id=10u5iXSAPQUDJ8oXiiuRSMzyoc0ZyT4cg>
+    <img src="https://drive.google.com/uc?export=view&id=10u5iXSAPQUDJ8oXiiuRSMzyoc0ZyT4cg">
 </p>
 
 ### Data Modeling
