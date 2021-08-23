@@ -11,7 +11,6 @@ The goal is to provide a suitable Api which allows http requests from the fronte
 
 * User login with their phone.
 * User confirm assitance once is logged in and receive the general invitation.
-* User decline the assistance once is logged in and receive the greating card.
 * User confirm the assistance once is logged in and receive the form to fill.out.
 * If a family member already filled out the form you can check it or modify it.
 * User fill up the form and receive the form summary.
@@ -20,10 +19,10 @@ The goal is to provide a suitable Api which allows http requests from the fronte
 #### Out of Scope (use-cases not supported)
 
 * Users can't have the guest report.
-* Caso de uso 2
+* User decline the assistance once is logged in and receive the greating card.
 
 ## Architecture
-https://drive.google.com/file/d/10u5iXSAPQUDJ8oXiiuRSMzyoc0ZyT4cg/view?usp=sharing
+
 ### Diagram
 <p>
     <img src="https://drive.google.com/uc?export=view&id=10u5iXSAPQUDJ8oXiiuRSMzyoc0ZyT4cg">
