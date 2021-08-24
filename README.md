@@ -31,6 +31,12 @@ The goal is to provide a suitable Api which allows http requests from the fronte
 ### Data Modeling
 Entities, Jsons, Tables, entity-relations diagram.
 
+#### Entity-Relationship Diagram
+<p>
+    <img src="https://drive.google.com/uc?export=view&id=1WjfJHrR2180hvx6tTgzC58HFzRfZvBJi">
+</p>
+
+
 ## Limitations
 * Get requests should have a x ms latency or less.
 * Api latency is X ms
