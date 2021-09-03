@@ -11,7 +11,7 @@ The goal is to provide a suitable Api which allows http requests from the fronte
 
 * User login with their phone.
 * User confirm assitance once is logged in and receive the general invitation.
-* User confirm the assistance once is logged in and receive the form to fill.out.
+* User confirm the assistance once is logged in and receive the form to fill up.
 * If a family member already filled out the form you can check it or modify it.
 * User fill up the form and receive the form summary.
 * The system admin can download the report of the users that already confirmed the assistance.
@@ -41,4 +41,8 @@ Entities, Jsons, Tables, entity-relations diagram.
 * Get requests should have a x ms latency or less.
 * Api latency is X ms
 * No more than X requests per second
+
+## Testing Plan
+
+* User login, invitation received, form received, is filled up?, check user info, receiving form summary, admin system.
 
