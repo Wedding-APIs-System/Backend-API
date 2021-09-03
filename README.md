@@ -1,7 +1,7 @@
 # Sergio and Laura's Wedding
 ---
 ## Overview: 
-My brother is going to get married, and all his wedding invitation system it's going to be digital and built by him (frontend) and by me (backend).
+My brother is going to get married, and all his wedding invitation system it's going to be digital and build by him (frontend) and  me (backend).
 The invitation system allows the user to confirm its assistance and its family assistance to the wedding. As well as food allergies, number of assistents and additional comments. Finally, the system will send automatically a personalized invitation once the  user confirm that is going to be at the wedding.
 
 ### Scope
