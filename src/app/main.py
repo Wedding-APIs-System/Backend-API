@@ -1,14 +1,13 @@
 from fastapi import FastAPI
+from app.api import landing
 
 app = FastAPI()
 
-
+app.include_router(landing.router)
 
 @app.get("/ping")
-def pong():
+async def pong():
     return {"ping": "pong!"}
 
 
-@app.get('/', tags=["API Landing"])
-def welcome():
-    return {"title": "Backend API for the wedding project"}
+
