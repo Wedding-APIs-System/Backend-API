@@ -3,7 +3,6 @@ import logging
 import sqlalchemy
 
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 logger = logging.getLogger()
@@ -86,8 +85,16 @@ def create_connection():
             phone_number VARCHAR(150) NOT NULL, attendance_confirmation BOOLEAN, \
             allergies VARCHAR(250), additional_comments VARCHAR(255))"
 
-    with db.connect() as conn:
-        conn.execute(stmt)
+    try:
+        with db.connect() as conn:
+            conn.execute(stmt)
+
+    except Exception as e:
+        logger.exception(e)
+        
+
 
 if __name__=='__main__':
     create_connection()
+
+   
