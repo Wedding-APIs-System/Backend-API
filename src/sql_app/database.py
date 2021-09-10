@@ -3,9 +3,11 @@ import logging
 import sqlalchemy
 
 from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 logger = logging.getLogger()
+
 
 def init_connection_engine():
     # Database configuration 
@@ -91,10 +93,21 @@ def create_connection():
 
     except Exception as e:
         logger.exception(e)
-        
 
 
-if __name__=='__main__':
-    create_connection()
+def orm_connection():
+    '''
+    This function is created to start the db connection
+    '''
+    engine = init_connection_engine()
+
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)        
+
+    return SessionLocal, engine
+
+# if __name__=='__main__':
+#     #create_connection()
+    # SessionLocal, engine = orm_connection()
+    
 
    
