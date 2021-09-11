@@ -20,3 +20,6 @@ class Guest(BaseModel):
     class Config:
         orm_mode = True
 
+class GuestFamily(BaseModel):
+    family_name: str
+

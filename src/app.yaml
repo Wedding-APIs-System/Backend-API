@@ -1,0 +1,4 @@
+runtime: python37
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app
+includes:
+  - env_variables.yaml
