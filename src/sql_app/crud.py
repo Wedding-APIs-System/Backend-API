@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from . import models, schemas
 # from .database import SessionLocal, engine
@@ -17,14 +18,18 @@ def get_guest(db: Session, phone_number: str):
 def confirm_assistance(db: Session, confirmation: schemas.GuestAssistance, phone_number: str()):
     # guest_info = models.Guest(**confirmation, phone_number=phone_number)
     guest_info = get_guest(db, phone_number)
-    #Update the attendance confirmation
-    guest_info.attendance_confirmation = confirmation.attendance_confirmation
+    if guest_info is not None:
+        #Update the attendance confirmation
+        guest_info.attendance_confirmation = confirmation.attendance_confirmation
 
-    #Save and refresh the changes on the db
-    db.commit()
-    db.refresh(guest_info)
+        #Save and refresh the changes on the db
+        db.commit()
+        db.refresh(guest_info)
 
-    return guest_info
+        return guest_info
+    
+    else:
+        raise HTTPException(status_code=404, detail="Validation Error, the number doesn't exist")
 
 
 # *************THe following section was to test if the crud was working *************
