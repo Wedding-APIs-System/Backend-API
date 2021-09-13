@@ -17,9 +17,9 @@ def get_db():
 router = APIRouter()
 
 # @router.get("/login/{guest_number}", response_model=schemas.GuestFamily)
-@router.get("/login/{guest_number}")
+@router.get("/login/{guest_number}", tags=["Login endpoint"])
 async def get_family(guest_number: str, db: Session = Depends(get_db)):
-    db_family = crud.get_guest(db, phone_number=guest_number)
+    db_family = crud.get_guest(db, phone_number=guest_number).family.family_name
     if db_family is None:
         raise HTTPException(status_code=404, detail="User not found")
     return db_family

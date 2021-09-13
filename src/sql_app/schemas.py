@@ -8,12 +8,17 @@ class Family(BaseModel):
     class Config:
         orm_mode = True
 
-class Guest(BaseModel):
+class GuestAssistance(BaseModel):
+    attendance_confirmation: bool
+
+class GuestBase(BaseModel):
+    phone_number: str
+
+class Guest(GuestBase):
     guest_id: int
     family_id: int
     name: str
-    phone_number: str
-    attendance_confirmation: Optional[str]
+    attendance_confirmation: Optional[bool]
     allergies: Optional[str]
     additional_comments: Optional[str]
 
