@@ -7,6 +7,15 @@ from .database import orm_connection
 # SessionLocal, engine = orm_connection()
 # models.Base.metadata.create_all(bind=engine)
 
+def get_assistants(db: Session, phone_number: str):
+    guest_object = db.query(models.Guest).filter(models.Guest.phone_number == phone_number).first()
+    if guest_object is not None:
+        family_id = guest_object.family_id
+        asstants_number = db.query(models.Guest).filter(models.Guest.family_id == family_id).count()
+        return asstants_number
+
+    else:
+        return None
 
 def get_guest(db: Session, phone_number: str):
     guest_object = db.query(models.Guest).filter(models.Guest.phone_number == phone_number).first()
