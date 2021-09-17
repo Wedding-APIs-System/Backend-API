@@ -40,7 +40,13 @@ def confirm_assistance(db: Session, confirmation: schemas.GuestAssistance, phone
     family_members = get_family_members(db, phone_number)
     
 
-    if family_members is not None:
+    if family_members and guest_info is not None:
+        # update the allergies  and the additional comments for the user doing the confirmation
+        guest_info.allergies = confirmation.allergies
+        guest_info.additional_comments = confirmation.additional_comments
+        db.commit()
+        db.refresh(guest_info)
+
         # Go through the list of members of the same family
         for member in family_members:
             member.attendance_confirmation = confirmation.attendance_confirmation

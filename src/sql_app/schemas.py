@@ -10,6 +10,8 @@ class Family(BaseModel):
 
 class GuestAssistance(BaseModel):
     attendance_confirmation: bool
+    allergies: Optional[str]
+    additional_comments: Optional[str]
 
 class GuestBase(BaseModel):
     phone_number: str
