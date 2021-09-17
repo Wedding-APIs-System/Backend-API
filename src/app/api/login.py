@@ -31,4 +31,4 @@ async def get_family(guest_number: str, db: Session = Depends(get_db)):
 
     return {'family_name':f'{db_family.family.family_name}',
             'attendance_confirmation': f'{db_family.attendance_confirmation}',
-            'Number of assistants': f'{assistants_number}'}
+            'Number_of_assistants': f'{assistants_number}'}

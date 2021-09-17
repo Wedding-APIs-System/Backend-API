@@ -24,18 +24,46 @@ def get_guest(db: Session, phone_number: str):
     else:
         return None
 
+def get_family_members(db: Session, phone_number: str):
+    guest_object = db.query(models.Guest).filter(models.Guest.phone_number == phone_number).first()
+    
+    if guest_object is not None:
+        family_id = guest_object.family_id
+        members_list = db.query(models.Guest).filter(models.Guest.family_id == family_id).all()
+        return members_list
+    else:
+        return None
+
 def confirm_assistance(db: Session, confirmation: schemas.GuestAssistance, phone_number: str()):
     # guest_info = models.Guest(**confirmation, phone_number=phone_number)
     guest_info = get_guest(db, phone_number)
-    if guest_info is not None:
-        #Update the attendance confirmation
-        guest_info.attendance_confirmation = confirmation.attendance_confirmation
+    family_members = get_family_members(db, phone_number)
+    
 
-        #Save and refresh the changes on the db
-        db.commit()
-        db.refresh(guest_info)
+    if family_members is not None:
+        # Go through the list of members of the same family
+        for member in family_members:
+            member.attendance_confirmation = confirmation.attendance_confirmation
+            db.commit()
+            # refreshing means to expire and then immediately get the latest data for
+            # the object from the database.
+            db.refresh(member)      
+            
+        updated_members = get_family_members(db, phone_number)
 
-        return guest_info
+        return updated_members
+    # Save and refresh the changes on the db
+    
+
+    # if guest_info is not None:
+    #     #Update the attendance confirmation
+    #     guest_info.attendance_confirmation = confirmation.attendance_confirmation
+
+    #     #Save and refresh the changes on the db
+    #     db.commit()
+    #     db.refresh(guest_info)
+
+    #     return guest_info
     
     else:
         raise HTTPException(status_code=404, detail="Validation Error, the number doesn't exist")
